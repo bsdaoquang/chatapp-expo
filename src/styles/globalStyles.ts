@@ -13,6 +13,23 @@ export const globalStyles = StyleSheet.create({
 		color: colors.white,
 		fontSize: 14,
 		fontFamily: fontFamilies.regular,
-		lineHeight: 19,
+	},
+	section: {
+		marginHorizontal: 16,
+		marginBottom: 20,
+		paddingVertical: 16,
+	},
+	row: {
+		flexDirection: 'row',
+	},
+	center: {
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+
+	avatar: {
+		width: 45,
+		height: 45,
+		borderRadius: 50,
 	},
 });
