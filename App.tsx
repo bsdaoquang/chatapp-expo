@@ -1,8 +1,7 @@
 /** @format */
 
-import { StatusBar } from 'react-native';
+import { ActivityIndicator, StatusBar } from 'react-native';
 import { HomeScreen } from './src/screens';
-import AppLoading from 'expo-app-loading';
 import {
 	useFonts,
 	Roboto_400Regular,
@@ -18,7 +17,7 @@ export default function App() {
 	});
 
 	if (!fontLoaded) {
-		return <AppLoading />;
+		return <ActivityIndicator />;
 	} else {
 		return (
 			<>
