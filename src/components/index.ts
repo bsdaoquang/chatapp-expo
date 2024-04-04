@@ -7,6 +7,7 @@ import Row from './Row';
 import Section from './Section';
 import SpaceComponent from './SpaceComponent';
 import TextComponent from './TextComponent';
+import UserComponent from './UserComponent';
 
 export {
 	Container,
@@ -16,4 +17,5 @@ export {
 	Avatar,
 	SpaceComponent,
 	ButtonComponent,
+	UserComponent,
 };

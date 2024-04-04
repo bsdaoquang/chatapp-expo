@@ -25,6 +25,7 @@ const ButtonComponent = (props: Props) => {
 
 	return (
 		<TouchableOpacity
+			onPress={onPress}
 			style={[
 				globalStyles.button,
 				{

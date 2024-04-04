@@ -1,7 +1,7 @@
 /** @format */
 
 import { ActivityIndicator, StatusBar } from 'react-native';
-import { HomeScreen } from './src/screens';
+import { HomeScreen, Login } from './src/screens';
 import {
 	useFonts,
 	Roboto_400Regular,
