@@ -1,11 +1,9 @@
 /** @format */
 
-import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import { UserModel } from '../models/UserModel';
-import { globalStyles } from '../styles/globalStyles';
+import { TouchableOpacity } from 'react-native';
 import { Row, TextComponent } from '.';
-import { colors } from '../constants/colors';
+import { UserModel } from '../models/UserModel';
 
 interface Props {
 	user: UserModel;

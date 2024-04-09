@@ -95,15 +95,13 @@ const HomeScreen = () => {
 				</Row>
 			</Section>
 
-			{users.length > 0 ? (
+			{users.length > 0 && (
 				<FlatList
 					removeClippedSubviews
 					showsVerticalScrollIndicator={false}
 					data={users}
 					renderItem={({ item }) => <UserComponent user={item} />}
 				/>
-			) : (
-				<TextComponent text='Data not found!!!' />
 			)}
 		</Container>
 	);

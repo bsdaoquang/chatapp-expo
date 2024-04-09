@@ -1,7 +1,7 @@
 /** @format */
 
 import SearchScreen from './SearchScreen';
-import Login from './auth/Login';
+import LoginWithEmail from './auth/LoginWithEmail';
 import HomeScreen from './home/HomeScreen';
 
-export { HomeScreen, SearchScreen, Login };
+export { HomeScreen, SearchScreen, LoginWithEmail };

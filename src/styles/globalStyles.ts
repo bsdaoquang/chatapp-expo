@@ -34,21 +34,33 @@ export const globalStyles = StyleSheet.create({
 
 	button: {
 		borderRadius: 8,
-		maxHeight: 40,
+		maxHeight: 48,
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: 40,
+		height: 48,
 		minWidth: 40,
 	},
 
 	inputContainer: {
+		marginBottom: 16,
+		marginTop: 8,
+		width: '100%',
+	},
+
+	inputContent: {
 		borderRadius: 8,
-		maxHeight: 40,
+		maxHeight: 48,
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: 40,
+		height: 48,
 		minWidth: 40,
 		backgroundColor: '#00000040',
-		paddingHorizontal: 8,
+		paddingHorizontal: 12,
+	},
+	input: {
+		margin: 0,
+		padding: 0,
+		flex: 1,
+		justifyContent: 'flex-start',
 	},
 });
