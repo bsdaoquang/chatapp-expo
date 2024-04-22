@@ -7,9 +7,10 @@ import { getFirestore } from 'firebase/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
 	apiKey: 'AIzaSyBOWF2J1sK6A1gHX8-QMRWP2DNJ2UxyPNY',
 	authDomain: 'chatapp-f01ee.firebaseapp.com',
+	databaseURL: 'https://chatapp-f01ee-default-rtdb.firebaseio.com',
 	projectId: 'chatapp-f01ee',
 	storageBucket: 'chatapp-f01ee.appspot.com',
 	messagingSenderId: '1014163921671',

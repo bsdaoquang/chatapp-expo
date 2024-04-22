@@ -1,27 +1,42 @@
 /** @format */
 
-import { View, Text, Touchable, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+import { PhoneAuthProvider } from 'firebase/auth';
+import React, { useRef, useState } from 'react';
 import {
 	ButtonComponent,
 	Container,
 	InputComponent,
-	Row,
 	Section,
-	SocialLogin,
-	SpaceComponent,
 	TextComponent,
 } from '../../components';
-import { globalStyles } from '../../styles/globalStyles';
-import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../constants/colors';
 import { fontFamilies } from '../../constants/fontFamilies';
+import { auth, firebaseConfig } from '../../firebase/firebaseConfig';
+import { globalStyles } from '../../styles/globalStyles';
 
 const HomeLogin = () => {
-	const [phoneNumber, setPhoneNumber] = useState('');
+	const [phoneNumber, setPhoneNumber] = useState('3282323686');
+
+	const recaptchaVerifier = useRef<any>(null);
+
+	const handleLoginWithPhone = async () => {
+		const provider = new PhoneAuthProvider(auth);
+		const vericationId = await provider.verifyPhoneNumber(
+			`+84${phoneNumber}`,
+			recaptchaVerifier.current
+		);
+
+		console.log(vericationId);
+	};
 
 	return (
 		<Container isScroll={false}>
+			<FirebaseRecaptchaVerifierModal
+				ref={recaptchaVerifier}
+				firebaseConfig={firebaseConfig}
+			/>
 			<Section styles={[globalStyles.center, { paddingTop: '15%' }]}>
 				<TextComponent
 					text='Login'
@@ -42,17 +57,7 @@ const HomeLogin = () => {
 				/>
 			</Section>
 			<Section>
-				<SocialLogin />
-			</Section>
-			<Section>
-				<ButtonComponent text='Login' onPress={() => {}} />
-				<SpaceComponent height={12} />
-				<Row>
-					<TextComponent text={`Dont't have an account? `} />
-					<TouchableOpacity>
-						<TextComponent text='Register' color={colors.blue} />
-					</TouchableOpacity>
-				</Row>
+				<ButtonComponent text='Login' onPress={handleLoginWithPhone} />
 			</Section>
 		</Container>
 	);
