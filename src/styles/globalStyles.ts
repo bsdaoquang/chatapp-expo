@@ -63,4 +63,7 @@ export const globalStyles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'flex-start',
 	},
+	modalContainer: {
+		backgroundColor: 'rgba(0,0,0,0.5)',
+	},
 });

@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Row, TextComponent } from '.';
+
 import { UserModel } from '../models/UserModel';
+import Row from './Row';
+import TextComponent from './TextComponent';
 
 interface Props {
 	user: UserModel;

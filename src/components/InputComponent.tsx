@@ -13,10 +13,10 @@ import {
 import React, { ReactNode, useState } from 'react';
 import TextComponent from './TextComponent';
 import { colors } from '../constants/colors';
-import { ButtonComponent, Row } from '.';
 import { globalStyles } from '../styles/globalStyles';
 import AntDesign from '@expo/vector-icons/build/AntDesign';
 import Octicons from '@expo/vector-icons/build/Octicons';
+import Row from './Row';
 
 interface Props {
 	value: string;
