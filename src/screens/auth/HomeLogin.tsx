@@ -15,8 +15,10 @@ import TextComponent from '@/components/TextComponent';
 import InputComponent from '@/components/InputComponent';
 import ButtonComponent from '@/components/ButtonComponent';
 import { LoadingModal } from '@/modals';
+import { Row, SpaceComponent } from '@/components';
+import { View } from 'react-native';
 
-const HomeLogin = () => {
+const HomeLogin = ({ navigation }: any) => {
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [errorText, setErrorText] = useState('');
@@ -24,17 +26,19 @@ const HomeLogin = () => {
 	const recaptchaVerifier = useRef<any>(null);
 
 	const handleLoginWithPhone = async () => {
-		setIsLoading(true);
+		// setIsLoading(true);
 		try {
 			const provider = new PhoneAuthProvider(auth);
+
 			const vericationId = await provider.verifyPhoneNumber(
 				`+84${phoneNumber}`,
 				recaptchaVerifier.current
 			);
 
-			console.log(vericationId);
-
-			setIsLoading(false);
+			navigation.navigate('ConfirmVerificationCode', {
+				vericationId,
+				phoneNumber: `+84${phoneNumber}`,
+			});
 		} catch (error: any) {
 			console.log(error);
 			setErrorText(error.message);
@@ -57,15 +61,27 @@ const HomeLogin = () => {
 				/>
 			</Section>
 			<Section styles={[globalStyles.center, { flex: 1 }]}>
-				<InputComponent
-					value={phoneNumber}
-					onChange={(val) => setPhoneNumber(val)}
-					placeholder='Phone number'
-					title='Phone number'
-					affix={<Ionicons name='call' size={18} color={colors.gray} />}
-					clear
-					keyboardType='phone-pad'
-				/>
+				<Row>
+					<View style={{ flex: 1 }}>
+						<InputComponent
+							title=' '
+							value='+84'
+							onChange={(val) => console.log(val)}
+						/>
+					</View>
+					<SpaceComponent width={12} />
+					<View style={{ flex: 4 }}>
+						<InputComponent
+							value={phoneNumber}
+							onChange={(val) => setPhoneNumber(val)}
+							placeholder='Phone number'
+							title='Phone number'
+							affix={<Ionicons name='call' size={18} color={colors.gray} />}
+							clear
+							keyboardType='phone-pad'
+						/>
+					</View>
+				</Row>
 
 				{errorText && <TextComponent text={errorText} color={colors.danger} />}
 			</Section>

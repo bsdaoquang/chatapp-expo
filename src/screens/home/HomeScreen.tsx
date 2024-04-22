@@ -1,6 +1,10 @@
 /** @format */
 
+import { Ionicons } from '@expo/vector-icons';
+import { signOut } from 'firebase/auth';
+import { collection, onSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
+import { FlatList, Platform, StatusBar, TouchableOpacity } from 'react-native';
 import {
 	Avatar,
 	ButtonComponent,
@@ -11,22 +15,11 @@ import {
 	TextComponent,
 	UserComponent,
 } from '../../components';
-import { fontFamilies } from '../../constants/fontFamilies';
-import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../constants/colors';
-import { globalStyles } from '../../styles/globalStyles';
-import { FlatList, Platform, StatusBar } from 'react-native';
-import { users } from '../../data/users';
-import {
-	addDoc,
-	arrayRemove,
-	collection,
-	doc,
-	onSnapshot,
-	updateDoc,
-} from 'firebase/firestore';
-import { fs } from '../../firebase/firebaseConfig';
+import { fontFamilies } from '../../constants/fontFamilies';
+import { auth, fs } from '../../firebase/firebaseConfig';
 import { UserModel } from '../../models/UserModel';
+import { globalStyles } from '../../styles/globalStyles';
 
 const HomeScreen = () => {
 	const [users, setUsers] = useState<UserModel[]>([]);
@@ -66,6 +59,9 @@ const HomeScreen = () => {
 						font={fontFamilies.medium}
 						flex={1}
 					/>
+					<TouchableOpacity onPress={() => signOut(auth)}>
+						<TextComponent text='Logout' />
+					</TouchableOpacity>
 				</Row>
 			</Section>
 			<Section>

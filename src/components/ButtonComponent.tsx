@@ -18,12 +18,13 @@ interface Props {
 	icon?: ReactNode;
 	onPress: () => void;
 	color?: string;
+	type?: 'primary' | 'link' | 'text';
 }
 
 const ButtonComponent = (props: Props) => {
-	const { styles, text, icon, onPress, color } = props;
+	const { styles, text, icon, onPress, color, type } = props;
 
-	return (
+	return !type || type === 'primary' ? (
 		<TouchableOpacity
 			onPress={onPress}
 			style={[
@@ -38,6 +39,10 @@ const ButtonComponent = (props: Props) => {
 				<TextComponent text={text} color={color ? colors.white : '#212121'} />
 			)}
 		</TouchableOpacity>
+	) : type === 'link' || type === 'text' ? (
+		<TouchableOpacity>{icon}</TouchableOpacity>
+	) : (
+		<></>
 	);
 };
 
