@@ -2,7 +2,7 @@
 
 import { Ionicons } from '@expo/vector-icons';
 import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
-import { PhoneAuthProvider } from 'firebase/auth';
+import { PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
 import React, { useRef, useState } from 'react';
 import {
 	ButtonComponent,
@@ -15,20 +15,38 @@ import { colors } from '../../constants/colors';
 import { fontFamilies } from '../../constants/fontFamilies';
 import { auth, firebaseConfig } from '../../firebase/firebaseConfig';
 import { globalStyles } from '../../styles/globalStyles';
+import { TouchableOpacity } from 'react-native';
 
 const HomeLogin = () => {
-	const [phoneNumber, setPhoneNumber] = useState('3282323686');
+	const [phoneNumber, setPhoneNumber] = useState('328323686');
+	const [vericationId, setVericationId] = useState('');
 
 	const recaptchaVerifier = useRef<any>(null);
 
 	const handleLoginWithPhone = async () => {
-		const provider = new PhoneAuthProvider(auth);
-		const vericationId = await provider.verifyPhoneNumber(
-			`+84${phoneNumber}`,
-			recaptchaVerifier.current
-		);
+		try {
+			const provider = new PhoneAuthProvider(auth);
+			const vericationId = await provider.verifyPhoneNumber(
+				`+84${phoneNumber}`,
+				recaptchaVerifier.current
+			);
 
-		console.log(vericationId);
+			setVericationId(vericationId);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const confirmcode = async () => {
+		try {
+			const credential = PhoneAuthProvider.credential(vericationId, '123456');
+
+			await signInWithCredential(auth, credential).then((user) =>
+				console.log(user)
+			);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
@@ -37,6 +55,10 @@ const HomeLogin = () => {
 				ref={recaptchaVerifier}
 				firebaseConfig={firebaseConfig}
 			/>
+
+			<TouchableOpacity onPress={confirmcode}>
+				<TextComponent text='login' />
+			</TouchableOpacity>
 			<Section styles={[globalStyles.center, { paddingTop: '15%' }]}>
 				<TextComponent
 					text='Login'
