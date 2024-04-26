@@ -1,20 +1,11 @@
 /** @format */
 
-import { View, Text, TextInput, Button } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import {
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-} from 'firebase/auth';
-import { auth } from '../../firebase/firebaseConfig';
-import {
-	Container,
-	InputComponent,
-	Section,
-	TextComponent,
-} from '../../components';
 import Ionicons from '@expo/vector-icons/build/Ionicons';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import { Container, InputComponent, Section } from '../../components';
 import { colors } from '../../constants/colors';
+import { auth } from '../../firebase/firebaseConfig';
 
 const LoginWithEmail = () => {
 	const [email, setEmail] = useState('');

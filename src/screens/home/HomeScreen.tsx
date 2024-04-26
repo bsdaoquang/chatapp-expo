@@ -43,7 +43,7 @@ const HomeScreen = () => {
 	}, []);
 
 	return (
-		<Container>
+		<Container isScroll={false}>
 			<Section
 				styles={{
 					marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,

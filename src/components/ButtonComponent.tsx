@@ -6,6 +6,7 @@ import {
 	TouchableOpacity,
 	StyleProp,
 	ViewStyle,
+	TextStyle,
 } from 'react-native';
 import React, { ReactNode } from 'react';
 import { globalStyles } from '../styles/globalStyles';
@@ -19,10 +20,11 @@ interface Props {
 	onPress: () => void;
 	color?: string;
 	type?: 'primary' | 'link' | 'text';
+	textStyles?: StyleProp<TextStyle>;
 }
 
 const ButtonComponent = (props: Props) => {
-	const { styles, text, icon, onPress, color, type } = props;
+	const { styles, text, icon, onPress, color, type, textStyles } = props;
 
 	return !type || type === 'primary' ? (
 		<TouchableOpacity
@@ -36,7 +38,11 @@ const ButtonComponent = (props: Props) => {
 			]}>
 			{icon && icon}
 			{text && (
-				<TextComponent text={text} color={color ? colors.white : '#212121'} />
+				<TextComponent
+					text={text}
+					color={color ? colors.white : '#212121'}
+					styles={textStyles}
+				/>
 			)}
 		</TouchableOpacity>
 	) : type === 'link' || type === 'text' ? (

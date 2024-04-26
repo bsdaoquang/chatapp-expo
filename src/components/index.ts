@@ -3,10 +3,10 @@
 import Avatar from './Avatar';
 import ButtonComponent from './ButtonComponent';
 import Container from './Container';
+import Divider from './Divider';
 import InputComponent from './InputComponent';
 import Row from './Row';
 import Section from './Section';
-import SocialLogin from './SocialLogin';
 import SpaceComponent from './SpaceComponent';
 import TextComponent from './TextComponent';
 import UserComponent from './UserComponent';
@@ -21,5 +21,5 @@ export {
 	ButtonComponent,
 	UserComponent,
 	InputComponent,
-	SocialLogin,
+	Divider,
 };

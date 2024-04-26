@@ -17,6 +17,7 @@ import ButtonComponent from '@/components/ButtonComponent';
 import { LoadingModal } from '@/modals';
 import { Row, SpaceComponent } from '@/components';
 import { View } from 'react-native';
+import SocialLogin from './components/SocialLogin';
 
 const HomeLogin = ({ navigation }: any) => {
 	const [phoneNumber, setPhoneNumber] = useState('');
@@ -60,7 +61,7 @@ const HomeLogin = ({ navigation }: any) => {
 					font={fontFamilies.medium}
 				/>
 			</Section>
-			<Section styles={[globalStyles.center, { flex: 1 }]}>
+			<Section styles={[{ flex: 2, justifyContent: 'center' }]}>
 				<Row>
 					<View style={{ flex: 1 }}>
 						<InputComponent
@@ -84,11 +85,10 @@ const HomeLogin = ({ navigation }: any) => {
 				</Row>
 
 				{errorText && <TextComponent text={errorText} color={colors.danger} />}
-			</Section>
-			<Section>
+				<SpaceComponent height={16} />
 				<ButtonComponent text='Login' onPress={handleLoginWithPhone} />
 			</Section>
-
+			<SocialLogin />
 			<LoadingModal visible={isLoading} />
 		</Container>
 	);
